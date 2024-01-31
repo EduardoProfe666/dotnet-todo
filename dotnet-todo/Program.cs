@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-builder.Services.AddDbContext<ToDoDb>(x => x.UseSqlite("DataSource=db/db.dat"));
+builder.Services.AddDbContext<ToDoDb>(x => x.UseInMemoryDatabase("Db"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -30,8 +30,7 @@ builder.Services.AddSwaggerGen(c =>
                           # 🎃 ASP.NET Core Web API ToDo 🎃
                           ## 💥 Resumen
 
-                          Sistema para automatizar procesos internos de un ToDo, con una base de datos
-                          simple en Sqlite.
+                          Sistema para automatizar procesos internos de un ToDo
 
                           ## ✨ Principales Funcionalidades
                           - Papelera de Reciclaje
